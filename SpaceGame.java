@@ -1,8 +1,8 @@
-/** Project: Solo Lab 7 Assignment
+/** Project: Solo Lab 7
  * Purpose Details: Space Game with new features added
  * Course: IST 242
  * Author: Joseph Shiju
- * Date Developed: 5/2/2026
+ * Date Developed: 4/28/2026
  * Last Date Changed: 5/2/2026
  * Rev: 1
  */
