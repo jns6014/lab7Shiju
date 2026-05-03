@@ -16,86 +16,128 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SpaceGame extends JFrame implements KeyListener {
+
+    /** The width of the game window. */
     private static final int WIDTH = 600;
 
+    /** The height of the game window. */
     private static final int HEIGHT = 600;
 
+    /** The width of the player ship. */
     private static final int PLAYER_WIDTH = 80;
 
+    /** The height of the player ship. */
     private static final int PLAYER_HEIGHT = 80;
 
+    /** The width of each obstacle. */
     private static final int OBSTACLE_WIDTH = 60;
 
+    /** The height of each obstacle. */
     private static final int OBSTACLE_HEIGHT = 60;
 
+    /** The width of the projectile. */
     private static final int PROJECTILE_WIDTH = 5;
 
+    /** The height of the projectile. */
     private static final int PROJECTILE_HEIGHT = 10;
 
+    /** The number of pixels the player moves per key press. */
     private static final int PLAYER_SPEED = 10;
 
+    /** The speed obstacles fall at in level 1. */
     private static final int OBSTACLE_SPEED = 3;
 
+    /** The speed obstacles fall at in level 2. */
     private static final int OBSTACLE_SPEED2 = 6;
 
+    /** The number of pixels the projectile moves per tick. */
     private static final int PROJECTILE_SPEED = 10;
 
+    /** The maximum health the player can have. */
     private static final int MAX_HEALTH = 100;
 
+    /** The amount of health restored when picking up a power-up. */
     private static final int POWERUP_HEAL = 20;
 
+    /** The size of the health power-up icon. */
     private static final int POWERUP_SIZE = 50;
 
-    private static final int SHIELD_DURATION = 250;
+    /** The number of ticks the shield stays active (250 ticks x 20ms = 5 seconds). */
+    private static final int SHIELD_DURATION = 150;
 
+    /** The current player score. */
     private int score = 0;
 
+    /** The current player health. */
     private int health = MAX_HEALTH;
 
+    /** Whether the game is over. */
     private boolean isGameOver = false;
 
+    /** Whether the player has won the game. */
     private boolean gameWon = false;
 
+    /** Whether a projectile is currently on screen. */
     private boolean isProjectileVisible = false;
 
+    /** Whether the player is currently firing to prevent spamming. */
     private boolean isFiring = false;
 
+    /** The current game level. */
     private int level = 1;
 
+    /** The number of seconds left on the countdown timer. */
     private int countdownSeconds = 90;
 
+    /** The number of ticks remaining on the shield. */
     private int shieldTimer = 0;
 
+    /** The current sprite frame index for obstacle animation (0-3). */
     private int spriteFrame = 0;
 
+    /** Counter used to slow down the sprite animation. */
     private int spriteCount = 0;
 
+    /** The x coordinate of the player ship. */
     private int playerX;
 
+    /** The y coordinate of the player ship. */
     private int playerY;
 
+    /** The x coordinate of the projectile. */
     private int projectileX;
 
+    /** The y coordinate of the projectile. */
     private int projectileY;
 
+    /** The list of active obstacles on screen. */
     private ArrayList<Point> obstacles = new ArrayList<Point>();
 
+    /** The list of active health power-ups on screen. */
     private ArrayList<Point> powerUps = new ArrayList<Point>();
 
+    /** Array storing star data for the background. Each row is x, y, size, r, g, b. */
     private int[][] stars;
 
+    /** The sprite sheet image used for obstacle animation. */
     private BufferedImage spriteSheet;
 
+    /** The player ship image loaded from ship.png. */
     private Image shipImage;
 
+    /** The health power-up image loaded from healthbox.png. */
     private Image healthboxImage;
 
+    /** The main game panel that everything is drawn on. */
     private JPanel gamePanel;
 
+    /** The main game loop timer. */
     private Timer timer;
 
+    /** The countdown clock timer. */
     private Timer cTimer;
 
+    /** Random number generator used throughout the game. */
     private Random rand = new Random();
 
     /**
